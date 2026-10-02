@@ -43,6 +43,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.woof.data.Dog
 import com.example.woof.data.dogs
 import com.example.woof.ui.theme.WoofTheme
+import androidx.compose.ui.draw.clip
+import androidx.compose.material3.MaterialTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -114,13 +116,10 @@ fun DogIcon(
 ) {
     Image(
         modifier = modifier
-            .size(dimensionResource(R.dimen.image_size))
-            .padding(dimensionResource(R.dimen.padding_small)),
+            .size(dimensionResource(id = R.dimen.image_size))
+            .padding(dimensionResource(id = R.dimen.padding_small))
+            .clip(MaterialTheme.shapes.small),
         painter = painterResource(dogIcon),
-
-        // Content Description is not needed here - image is decorative, and setting a null content
-        // description allows accessibility services to skip this element during navigation.
-
         contentDescription = null
     )
 }
